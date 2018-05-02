@@ -15,13 +15,20 @@ int main(void)
     /* Replace with your application code */
 	DDRD = 0xff;
 	PORTD = 0xff;
-    while (1) 
-    {
-		
-		PORTD = 0x00; // 0이면 켜짐
-		_delay_ms(300);
-		PORTD = 0xff;
-		_delay_ms(300);
-    }
+	int i;
+   while (1)
+   {
+	   for (i=0; i<7; i++)
+	   {
+		   PORTD = ~(1<<i);
+		   _delay_ms(300);
+	   }
+	   
+	   for (i=0; i<7; i++)
+	   {
+		   PORTD = ~(0x80>>i);
+		   _delay_ms(300);
+	   }
+}
 }
 
